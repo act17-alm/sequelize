@@ -1,3 +1,6 @@
+
+
+
 // *****************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
 //
@@ -20,10 +23,14 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/api-routes.js")(app);
+var db = require("./models")
+  
 
 // Starting our Express app
 // =============================================================
+db.sequelize.sync().then(tables =>  
+
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
-});
+})
+)
